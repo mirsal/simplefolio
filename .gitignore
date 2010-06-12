@@ -4,6 +4,7 @@
 /log/*
 data/sql/
 /data/*.index/
+/data/*.db
 *~
 lib/form/base
 lib/filter/base
