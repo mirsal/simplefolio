@@ -1,0 +1,25 @@
+article.news {
+    border-top: #111 1px solid;
+    padding-top: 5px;
+    margin: 10px 20px;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: normal;
+    letter-spacing: normal;
+    line-height: 1.4em;
+
+    overflow: hidden;
+}
+
+    article.news span.date {
+        margin-bottom: 5px;
+        display: block;
+        font-size: small;
+        color: #888;
+    }
+
+    article.news div.content {
+    }
