@@ -1,3 +1,25 @@
+ol.slideshow
+{
+    margin: 0;
+    width:  760px;
+    height: 415px;
+    position: relative;
+    list-style: none;
+}
+
+ol.slideshow > li
+{
+    position: absolute;
+    top: 0; left: 0;
+}
+
+ol.slideshow > li img
+{
+    width: 760px;
+    height: 415px;
+    display: block;
+}
+
 article.news {
     border-top: #111 1px solid;
     padding-top: 5px;
