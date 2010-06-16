@@ -25,8 +25,8 @@ all:
     param:
       classname:  PropelPDO
       dsn:        mysql:dbname=simplefolio;host=localhost
-      username:   root
-      password:   
+      username:   simplefolio
+      password:   changeme
       encoding:   utf8
       persistent: true
       pooling:    true

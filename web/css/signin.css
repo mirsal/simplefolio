@@ -1,0 +1,69 @@
+div.page > div.restricted {
+    font-family: "Visitor", monospace;
+    text-transform: uppercase;
+    margin: 20px 0 0;
+    padding: 20px 0;
+    border-top: #333 1px solid;
+    border-bottom: #000 1px solid;
+    background: #202020;
+    color: #000;
+    text-shadow: 1px 1px 1px #333;
+}
+
+div.page > div.restricted p.warn {
+    font-size: xx-large;
+    margin-bottom: 10px;
+    margin-left: 75px;
+}
+
+div.page > div.restricted p.help {
+    margin-left: 75px;
+}
+
+div.page > form.signin {
+    margin: 0 auto;
+    font-family: "Visitor", monospace;
+    letter-spacing: 0.17em;
+    font-size: xx-large;
+    background: #101010;
+    border-top: #333 1px solid;
+    overflow: hidden;
+}
+
+div.page > form.signin div.fields {
+    width: 431px;
+    margin: 0 0 0 65px;
+    overflow: hidden;
+    float: left;
+}
+
+div.page > form.signin fieldset {
+    margin: 10px;
+    float: left;
+}
+
+div.page > form.signin input {
+    display: block;
+    border: none;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.page > form.signin input.submit {
+    display: block;
+    font-family: "Visitor", monospace;
+    text-transform: uppercase;
+    margin: 30px 0 0 20px;
+    float: left;
+    padding: 10px;
+    text-align: center;
+    border-top: #333 1px solid;
+    border-bottom: #000 1px solid;
+    -moz-border-radius: 5px;
+    background: #824F0E;
+    color: #000;
+    text-shadow: 1px 1px 1px #888;
+    font-size: large;
+    cursor: pointer;
+}
