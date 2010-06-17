@@ -1,0 +1,32 @@
+ul.thumbnails {
+    overflow: hidden;
+    list-style: none;
+    padding-bottom: 20px;
+}
+
+ul.thumbnails > li {
+    display: block;
+    float: left;
+    margin: 0 5px 5px 0;
+}
+
+ul.thumbnails > li > a {
+    display: block;
+    overflow: hidden;
+    border: 2px solid #000;
+    -moz-border-radius: 1px;
+    opacity: 0.5;
+}
+
+ul.thumbnails > li > a:hover {
+    border-color: #f0f0f0;
+    opacity: 1;
+}
+
+ul.thumbnails > li > a > * {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+
