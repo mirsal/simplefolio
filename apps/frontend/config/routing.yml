@@ -19,6 +19,12 @@ media:
   requirements:
     sf_method: [GET]
 
+thumbnail:
+  url: /galleries/:gallery/thumbs/:media
+  param: { module: gallery, action: renderThumbnail }
+  requirements:
+    sf_method: [GET]
+
 # default rules
 homepage:
   url:   /

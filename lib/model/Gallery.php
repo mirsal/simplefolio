@@ -51,4 +51,17 @@ class Gallery implements IteratorAggregate
             sfConfig::get('sf_gallery_media_dir_name').DIRECTORY_SEPARATOR.$filename;
         return new SplFileInfo($path);
     }
+
+    /**
+     * Finds a media's thumbnail with its name as input
+     *
+     * @param String $filename name of the media for which to retrieve a thumb
+     * @return SplFileInfo the requested media's thumbnail file
+     */
+    public function findThumbnail($filename)
+    {
+        $path = $this->dirname.DIRECTORY_SEPARATOR.
+            sfConfig::get('sf_gallery_thumbnails_dir_name').DIRECTORY_SEPARATOR.$filename;
+        return new SplFileInfo($path);
+    }
 }

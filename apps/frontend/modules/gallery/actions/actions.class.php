@@ -49,6 +49,21 @@ class galleryActions extends sfActions
   }
 
  /**
+  * Renders the specified media's thumbnail
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeRenderThumbnail(sfWebRequest $request)
+  {
+    $this->forward404Unless(
+        $gallery   = GalleryPeer::find($request->getParameter('gallery')) and
+        $thumbnail = $gallery->findThumbnail($request->getParameter('media'))
+    );
+
+    return $this->renderImage($thumbnail);
+  }
+
+ /**
   * Serves the specified image file
   *
   * @param SplFileInfo $file an image file
