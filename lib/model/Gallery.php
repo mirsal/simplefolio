@@ -1,5 +1,10 @@
 <?
 
+/**
+ * Gallery directory wrapper class
+ *
+ * @author Mirsal Ennaime
+ */
 class Gallery implements IteratorAggregate
 {
     protected $dirname;
@@ -9,11 +14,23 @@ class Gallery implements IteratorAggregate
         return basename($this->dirname);
     }
 
+    /**
+     * Class constructor
+     *
+     * @param String $dirname path to the gallery directory
+     */
     public function __construct($dirname)
     {
         $this->dirname = $dirname;
     }
 
+    /**
+     * Creates a directory iterator over the gallery media directory
+     *
+     * @see #IteratorAggregate::getIterator()
+     *
+     * @return FilesystemIterator a filesystem iterator
+     */
     public function getIterator()
     {
         return new FilesystemIterator(
@@ -22,6 +39,12 @@ class Gallery implements IteratorAggregate
         );
     }
 
+    /**
+     * Finds a media with its name as input
+     *
+     * @param String $filename name of the media to retrieve
+     * @return SplFileInfo the requested media file
+     */
     public function find($filename)
     {
         $path = $this->dirname.DIRECTORY_SEPARATOR.
