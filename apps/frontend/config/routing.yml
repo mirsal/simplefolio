@@ -1,6 +1,24 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+gallery_index:
+  url: /galleries
+  param: { module: gallery, action: index }
+  requirements:
+    sf_method: [GET]
+
+gallery:
+  url: /galleries/:gallery
+  param: { module: gallery, action: show }
+  requirements:
+    sf_method: [GET]
+
+media:
+  url: /galleries/:gallery/:media
+  param: { module: gallery, action: renderMedia }
+  requirements:
+    sf_method: [GET]
+
 # default rules
 homepage:
   url:   /

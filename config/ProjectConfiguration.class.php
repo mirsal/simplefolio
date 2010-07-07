@@ -9,5 +9,11 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enablePlugins('sfPropelPlugin');
     $this->enablePlugins('sfGuardPlugin');
+
+    sfConfig::add(array(
+        'sf_galleries_dir' => sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'galleries',
+        'sf_gallery_media_dir_name' => 'media',
+        'sf_gallery_thumbnails_dir_name' => 'thumbnails'
+    ));
   }
 }
