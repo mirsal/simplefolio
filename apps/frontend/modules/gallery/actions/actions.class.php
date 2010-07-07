@@ -45,20 +45,35 @@ class galleryActions extends sfActions
         $media   = $gallery->find($request->getParameter('media'))
     );
 
-    $img = getimagesize($media->getPathname());
+    return $this->renderImage($media);
+  }
+
+  public function renderImage(SplFileInfo $file)
+  {
+    $img = getimagesize($file->getPathname());
 
     $this->getResponse()->clearHttpHeaders();
 
     $this->getResponse()->addCacheControlHttpHeader('public');
     $this->getResponse()->addCacheControlHttpHeader('must-revalidate');
     $this->getResponse()->addCacheControlHttpHeader('max_age=86400');
+    $this->getResponse()->setHttpHeader('Last-Modified', $this->getResponse()->getDate($file->getCTime()));
+
+    if(($ts = strtotime($this->getRequest()->getHttpHeader('If-Modified-Since'))) and $ts <= $file->getCTime())
+    {
+        $this->getResponse()->setStatusCode(304, 'Not Modified');
+        $this->getResponse()->sendHttpHeaders();
+        return sfView::HEADERS_ONLY;
+    }
+
     $this->getResponse()->setHttpHeader('Expires', $this->getResponse()->getDate(time() + 3600));
     $this->getResponse()->setHttpHeader('Content-Type', $img['mime']);
-    $this->getResponse()->setHttpHeader('Content-Length', $media->getSize());
+    $this->getResponse()->setHttpHeader('Content-Length', $file->getSize());
 
     $this->getResponse()->sendHttpHeaders();
 
-    readfile($media->getPathname());
+    readfile($file->getPathname());
     return sfView::NONE;
+    
   }
 }
