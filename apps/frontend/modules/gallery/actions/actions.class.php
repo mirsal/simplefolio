@@ -6,7 +6,7 @@
  * @package    simplefolio
  * @subpackage gallery
  * @author     Mirsal Ennaime
- * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ * @version    $Id$
  */
 class galleryActions extends sfActions
 {
@@ -48,6 +48,11 @@ class galleryActions extends sfActions
     return $this->renderImage($media);
   }
 
+ /**
+  * Serves the specified image file
+  *
+  * @param SplFileInfo $file an image file
+  */
   public function renderImage(SplFileInfo $file)
   {
     $img = getimagesize($file->getPathname());
@@ -59,7 +64,7 @@ class galleryActions extends sfActions
     $this->getResponse()->addCacheControlHttpHeader('max_age=86400');
     $this->getResponse()->setHttpHeader('Last-Modified', $this->getResponse()->getDate($file->getCTime()));
 
-    if(($ts = strtotime($this->getRequest()->getHttpHeader('If-Modified-Since'))) and $ts <= $file->getCTime())
+    if(($ts = strtotime($this->getRequest()->getHttpHeader('If-Modified-Since'))) and $ts < $file->getCTime())
     {
         $this->getResponse()->setStatusCode(304, 'Not Modified');
         $this->getResponse()->sendHttpHeaders();
@@ -74,6 +79,5 @@ class galleryActions extends sfActions
 
     readfile($file->getPathname());
     return sfView::NONE;
-    
   }
 }
