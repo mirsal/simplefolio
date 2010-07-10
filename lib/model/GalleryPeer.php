@@ -22,6 +22,7 @@ class GalleryPeer
 
     /**
      * Finds all the available galleries
+     * TODO: Rewrite this with the DirectoryIterator API
      *
      * @return an array of #Gallery instances
      */
