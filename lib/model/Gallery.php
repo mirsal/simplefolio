@@ -47,8 +47,12 @@ class Gallery implements IteratorAggregate
      */
     public function find($filename)
     {
-        $path = $this->dirname.DIRECTORY_SEPARATOR.
-            sfConfig::get('sf_gallery_media_dir_name').DIRECTORY_SEPARATOR.$filename;
+        $subdir = sfConfig::get('sf_gallery_media_dir_name');
+        $path   = $this->getCanonicalPath($subdir, $filename);
+
+        if(false === $path)
+            return null;
+
         return new SplFileInfo($path);
     }
 
@@ -60,8 +64,31 @@ class Gallery implements IteratorAggregate
      */
     public function findThumbnail($filename)
     {
-        $path = $this->dirname.DIRECTORY_SEPARATOR.
-            sfConfig::get('sf_gallery_thumbnails_dir_name').DIRECTORY_SEPARATOR.$filename;
+        $subdir = sfConfig::get('sf_gallery_thumbnails_dir_name');
+        $path   = $this->getCanonicalPath($subdir, $filename);
+
+        if(false === $path)
+            return null;
+
         return new SplFileInfo($path);
     }
+
+    /**
+     * Build a canonical path from a directory path and a media file name
+     *
+     * @param String dirpath The base directory path
+     * @param String $filename A media file name
+     * @return mixed The canonical path if it is valid, false otherwise
+     */
+    protected function getCanonicalPath($subdir, $filename)
+    {
+        $cdirpath = realpath($this->dirname.DIRECTORY_SEPARATOR.$subdir);
+        $cpath    = realpath($cdirpath.DIRECTORY_SEPARATOR.$filename);
+
+        if(strncmp($cdirpath, $cpath, strlen($cdirpath)))
+            return false;
+
+        return $cpath;
+    }
 }
+
