@@ -74,7 +74,7 @@ class Gallery implements IteratorAggregate
     }
 
     /**
-     * Build a canonical path from a directory path and a media file name
+     * Builds a canonical path from a directory path and a media file name
      *
      * @param String dirpath The base directory path
      * @param String $filename A media file name
