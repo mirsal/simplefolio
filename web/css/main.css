@@ -103,11 +103,47 @@ div.page {
 }
 
     div.page > header {
-        background: url('../images/header.png') center no-repeat;
         width: 100%;
         height: 100px;
+        overflow: hidden;
     }
-    
+
+        div.page > header > img
+        {
+            display: block;
+            float: left;
+        }
+
+        div.page > header > ul.galleries
+        {
+            float: right;
+            text-align: right;
+            list-style: none;
+            font-size: x-small;
+            font-family: "Visitor", monospace;
+            margin: 25px 25px 0 0;
+        }
+
+            div.page > header > ul.galleries a
+            {
+                display: block;
+                height: 100%;
+                line-height: 1.3em;
+                padding-right: 15px;
+                color: #aaa;
+                text-decoration: none;
+                background: url('../images/dots.png') no-repeat right;
+            }
+
+            div.page > header > ul.galleries a:hover,
+            div.page > header > ul.galleries a:focus,
+            div.page > header > ul.galleries > li.current a
+            {
+                color: #f0f0f0;
+                background: url('../images/dots_hover.png') no-repeat right;
+            }
+
     div.page h2 {
         margin: 10px 20px;
     }
+

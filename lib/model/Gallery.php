@@ -40,6 +40,19 @@ class Gallery implements IteratorAggregate
     }
 
     /**
+     * Iterates over the incoming media
+     *
+     * @return FilesystemIterator an iterator over the incoming files
+     */
+    public function getIncoming()
+    {
+        return new FilesystemIterator(
+            $this->dirname.DIRECTORY_SEPARATOR.sfConfig::get('sf_gallery_incoming_dir_name'),
+            FilesystemIterator::NEW_CURRENT_AND_KEY | FilesystemIterator::SKIP_DOTS
+        );
+    }
+
+    /**
      * Finds a media with its name as input
      *
      * @param String $filename name of the media to retrieve

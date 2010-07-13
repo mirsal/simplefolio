@@ -10,7 +10,10 @@
   </head>
   <body>
     <div class="page">
-        <header></header>
+        <header>
+            <?php echo link_to(image_tag('header_logo'), '@homepage') ?>
+            <?php include_component('gallery', 'index') ?>
+        </header>
         <?php echo $sf_content ?>
     </page>
   </body>
